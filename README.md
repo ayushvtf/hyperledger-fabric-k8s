@@ -1,6 +1,5 @@
 # hyperledger-fabric-k8s
-
-'''
+```
 kubectl create ns hyperledger
 
 kubectl create -f pv/  -n hyperledger
@@ -32,4 +31,4 @@ peer channel fetch 0 mychannel.block -c mychannel -o orderer0:7050 --tls --cafil
 peer channel join -b mychannel.block
 
 peer channel list
-'''
+```
