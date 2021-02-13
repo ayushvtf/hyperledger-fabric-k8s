@@ -1,0 +1,44 @@
+# kind: PersistentVolume
+# apiVersion: v1
+# metadata:
+#   name: fabric-pv
+#   labels:
+#     type: local
+#     name: fabricfiles
+# spec:
+#   capacity:
+#     storage: 10Gi
+#   volumeMode: Filesystem
+#   accessModes:
+#     - ReadWriteMany
+#   persistentVolumeReclaimPolicy: Retain
+#   nfs:
+#     path: /nfs/fabric
+#     server: storage.local.parisi.biz
+#     readOnly: false
+
+# kind: PersistentVolume
+# apiVersion: v1
+# metadata:
+#   name: pv
+#   labels:
+#     type: local
+#     name: fabricfiles
+# spec:
+#   capacity:
+#     storage: 1Gi
+#   accessModes:
+#     - ReadWriteMany
+#   hostPath:
+#     path: "/fabric"
+
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: pv
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2 
+  zones: us-east-2a, us-east-2b
+  iopsPerGB: "5" 
+  fsType: ext4

@@ -1,0 +1,41 @@
+# kind: PersistentVolumeClaim
+# apiVersion: v1
+# metadata:
+#   name: fabric-pvc
+# spec:
+#   accessModes:
+#     - ReadWriteMany
+#   resources:
+#     requests:
+#       storage: 10Gi
+#   selector:
+#     matchLabels:
+#       name: fabricfiles
+
+# kind: PersistentVolumeClaim
+# apiVersion: v1
+# metadata:
+#   name: pvc
+# spec:
+#   accessModes:
+#     - ReadWriteMany
+#   resources:
+#     requests:
+#       storage: 1Gi
+#   selector:
+#     matchLabels:
+#       name: fabricfiles
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc
+  labels:
+    app: fabricfiles
+spec:
+  storageClassName: pv
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
